@@ -1,0 +1,19 @@
+:root{
+  --bg:#f7f9fc;
+  --card:#ffffff;
+  --accent:#0b74de;
+  --muted:#5b6368;
+  --radius:12px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Segoe UI, Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial;color:#111;background:var(--bg)}
+
+header{background:linear-gradient(90deg,var(--accent),#2ea3ff);color:white;padding:36px 24px;border-radius:0 0 16px 16px}
+header h1{margin:0;font-size:1.6rem}
+header p{margin:6px 0 0;color:rgba(255,255,255,0.9)}
+
+main{padding:24px;max-width:900px;margin:18px auto}
+#playground{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(10,10,10,0.06)}
+button{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+#output{margin-top:12px;color:var(--muted)}
