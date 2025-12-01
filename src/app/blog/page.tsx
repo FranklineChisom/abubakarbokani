@@ -10,11 +10,11 @@ export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Articles on law, policy, and African economics by Frankline Chisom Ebere.',
+  description: 'Articles on law, policy, and African economics by Abubakar Mohammed Bokani.',
   openGraph: {
-    title: 'Blog | Frankline Chisom Ebere',
+    title: 'Blog | Abubakar Mohammed Bokani',
     description: 'Articles on law, policy, and African economics.',
-    url: 'https://franklinechisom.com/blog',
+    url: 'https://abubakarbokani.com/blog',
   }
 };
 

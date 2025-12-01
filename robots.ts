@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/preview/'], // Hide admin and preview routes
     },
-    sitemap: 'https://franklinechisom.com/sitemap.xml',
+    sitemap: 'https://abubakarbokani.com/sitemap.xml',
   };
 }

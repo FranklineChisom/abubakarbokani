@@ -18,7 +18,7 @@ const PreviewContent: React.FC = () => {
   const id = searchParams.get('id');
 
   useEffect(() => {
-    document.title = 'Live Preview | Frankline Chisom Ebere';
+    document.title = 'Live Preview | Abubakar Mohammed Bokani';
   }, []);
 
   useEffect(() => {

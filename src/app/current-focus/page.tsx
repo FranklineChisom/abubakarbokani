@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   title: 'Current Research Focus',
   description: 'Research on regulatory fragmentation in African capital markets and AfCFTA protocols.',
   openGraph: {
-    title: 'Current Research Focus | Frankline Chisom Ebere',
+    title: 'Current Research Focus | Abubakar Mohammed Bokani',
     description: 'Research on regulatory fragmentation in African capital markets and AfCFTA protocols.',
-    url: 'https://franklinechisom.com/current-focus',
+    url: 'https://abubakarbokani.com/current-focus',
   }
 };
 

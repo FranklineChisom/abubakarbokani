@@ -8,7 +8,7 @@ interface SEOOptions {
   type?: string;
 }
 
-export const usePageTitle = (title: string, siteName: string = "Frankline Chisom Ebere") => {
+export const usePageTitle = (title: string, siteName: string = "Abubakar Mohammed Bokani") => {
   useEffect(() => {
     const fullTitle = title ? `${title} | ${siteName}` : siteName;
     document.title = fullTitle;
@@ -29,11 +29,11 @@ export const useSEO = (options: SEOOptions) => {
   } = options;
 
   useEffect(() => {
-    const siteName = 'Frankline Chisom Ebere';
+    const siteName = 'Abubakar Mohammed Bokani';
     const fullTitle = title ? `${title} | ${siteName}` : siteName;
     const defaultDescription = 'Legal scholar specializing in International Financial Law and African capital markets.';
     const metaDescription = description || defaultDescription;
-    const siteUrl = 'https://franklinechisom.com';
+    const siteUrl = 'https://abubakarbokani.com';
     const pageUrl = url || siteUrl;
 
     // Set title

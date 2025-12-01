@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   // Redirect if already authenticated (Client-side check)
   useEffect(() => {
-    document.title = 'Admin Login | Frankline Chisom Ebere';
+    document.title = 'Admin Login | Abubakar Mohammed Bokani';
     
     // Check local state or cookie presence
     const hasSession = document.cookie.includes('admin_session=true');

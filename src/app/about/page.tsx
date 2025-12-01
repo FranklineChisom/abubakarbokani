@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   title: 'About',
   description: 'Junior Research Fellow at Lex Lata Centre specializing in international financial law and African capital markets.',
   openGraph: {
-    title: 'About Frankline Chisom Ebere',
+    title: 'About Abubakar Mohammed Bokani',
     description: 'Junior Research Fellow at Lex Lata Centre specializing in international financial law.',
-    url: 'https://franklinechisom.com/about',
-    images: ['/images/Chisom.jpg']
+    url: 'https://abubakarbokani.com/about',
+    images: ['/images/bokani.jpg']
   }
 };
 
@@ -24,8 +24,8 @@ async function getAboutData() {
 export default async function About() {
   const siteConfig = await getAboutData();
 
-  const aboutImage = siteConfig?.about_image || '/images/Chisom.jpg';
-  const name = siteConfig?.name || 'Frankline Chisom Ebere';
+  const aboutImage = siteConfig?.about_image || '/images/bokani.jpg';
+  const name = siteConfig?.name || 'Abubakar Mohammed Bokani';
 
   return (
     <div className="max-w-5xl mx-auto px-6 space-y-20">
@@ -67,7 +67,7 @@ export default async function About() {
 
             <div className="pt-8">
                 <a 
-                href="/resume/Frankline_Ebere_CV.pdf" 
+                href="/resume/AbubakarBokaniCV.pdf" 
                 download
                 className="inline-flex items-center px-6 py-3 border border-slate-200 text-slate-700 hover:border-primary hover:text-primary transition-colors rounded-none text-sm font-medium"
                 >
