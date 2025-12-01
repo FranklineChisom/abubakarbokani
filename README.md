@@ -1,29 +1,36 @@
-# HTML Workspace
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A minimal HTML starter project.
+## Getting Started
 
-Files:
-- `index.html` — main page
-- `styles.css` — simple styles
-- `script.js` — tiny JS interaction
+First, run the development server:
 
-Quick start (PowerShell):
-
-```powershell
-# 1) Navigate to project
-cd "c:\Users\frank\OneDrive\Desktop\Chisom\Eluala Works\Dr Bokani\html-workspace"
-
-# 2) Run a simple static server using Python (if installed)
-python -m http.server 5500
-# or for Python 3 on some systems:
-python3 -m http.server 5500
-
-# Open http://localhost:5500 in your browser
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-If you prefer Node.js-based dev server, install 'live-server' globally:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```powershell
-npm install -g live-server
-live-server --port=5500
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

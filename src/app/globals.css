@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles 
+  You can add custom global overrides here if needed, 
+  but Tailwind classes are preferred.
+*/
+
+body {
+  @apply bg-white text-slate-800 antialiased;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
