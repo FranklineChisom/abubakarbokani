@@ -2,11 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import Pagination from '@/components/Pagination';
 import SearchBar from '@/components/SearchBar';
 import { BlogPost } from '@/types';
-import { useData } from '@/contexts/DataContext';
 
 interface BlogListProps {
   initialPosts: BlogPost[];
@@ -15,20 +14,7 @@ interface BlogListProps {
 const ITEMS_PER_PAGE = 5;
 
 const BlogList: React.FC<BlogListProps> = ({ initialPosts }) => {
-  const { addSubscriber } = useData();
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [currentPage, setCurrentPage] = useState(1);
-
-  const handleSubscribe = async () => {
-    if(!email) return;
-    setStatus('loading');
-    const success = await addSubscriber(email);
-    setTimeout(() => {
-        if(success) setStatus('success');
-        else setStatus('error');
-    }, 500);
-  };
 
   // Use initialPosts passed from server
   const publishedPosts = initialPosts.filter(post => post.published);
@@ -45,12 +31,12 @@ const BlogList: React.FC<BlogListProps> = ({ initialPosts }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 space-y-20">
-      {/* Intro - SEO Optimized */}
+    <div className="max-w-4xl mx-auto px-6 space-y-16 py-12">
+      {/* Intro */}
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <h1 className="font-serif text-4xl md:text-5xl text-primary font-normal mb-8">Writings</h1>
-        <p className="text-xl text-slate-600 font-light leading-relaxed max-w-2xl mb-8">
-          Thoughts on law, policy, and the future of African markets.
+        <h1 className="font-serif text-4xl md:text-5xl text-gray-900 font-bold mb-6">Blog</h1>
+        <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mb-10">
+          Thoughts on law, policy, and contemporary legal issues in Nigeria and beyond.
         </p>
         
         <SearchBar 
@@ -60,30 +46,41 @@ const BlogList: React.FC<BlogListProps> = ({ initialPosts }) => {
         />
       </div>
 
-      {/* Posts List - Already optimized (div wrapper) */}
-      <div className="grid gap-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {/* Posts List */}
+      <div className="grid gap-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
         {currentPosts.length > 0 ? currentPosts.map((post) => (
-          <article key={post.id} className="group flex flex-col md:grid md:grid-cols-4 gap-6 items-start">
-            <div className="md:col-span-1 text-sm text-slate-400 font-mono pt-1">
-              {post.date}
-              <div className="mt-2 text-xs text-accent uppercase tracking-wider font-semibold">{post.category}</div>
-            </div>
-            <div className="md:col-span-3">
-              <Link href={`/blog/${post.slug || post.id}`}>
-                <h2 className="font-serif text-2xl text-primary font-medium mb-3 group-hover:text-teal-700 transition-colors cursor-pointer">
-                  {post.title}
-                </h2>
-              </Link>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                {post.excerpt}
-              </p>
-              <Link href={`/blog/${post.slug || post.id}`} className="inline-flex items-center text-sm font-medium text-slate-800 hover:text-primary transition-colors">
-                Read Article <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-              </Link>
+          <article key={post.id} className="group border-b border-gray-100 pb-12 last:border-0">
+            <div className="flex flex-col md:flex-row gap-6 md:items-start">
+                <div className="md:w-1/4 flex-shrink-0">
+                    <div className="text-sm text-gray-400 font-mono mb-1 flex items-center gap-2">
+                        <Calendar size={14} /> {post.date}
+                    </div>
+                    {post.readTime && (
+                        <div className="text-xs text-gray-400 flex items-center gap-2">
+                            <Clock size={12} /> {post.readTime}
+                        </div>
+                    )}
+                </div>
+                
+                <div className="md:w-3/4">
+                    <Link href={`/blog/${post.slug || post.id}`}>
+                        <h2 className="font-serif text-2xl text-gray-900 font-bold mb-3 group-hover:text-red-700 transition-colors cursor-pointer leading-tight">
+                        {post.title}
+                        </h2>
+                    </Link>
+                    <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                        {post.excerpt}
+                    </p>
+                    <Link href={`/blog/${post.slug || post.id}`} className="inline-flex items-center text-sm font-bold text-red-600 hover:text-red-800 uppercase tracking-wide transition-colors mt-2">
+                        Read Article <ArrowRight size={14} className="ml-1 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </div>
             </div>
           </article>
         )) : (
-          <p className="text-slate-500 italic">No articles published yet.</p>
+          <div className="py-12 text-center bg-gray-50 rounded-lg border border-dashed border-gray-200">
+            <p className="text-gray-500 italic">No articles published yet.</p>
+          </div>
         )}
       </div>
 
@@ -92,58 +89,6 @@ const BlogList: React.FC<BlogListProps> = ({ initialPosts }) => {
         totalPages={totalPages} 
         onPageChange={handlePageChange} 
       />
-
-      {/* Subscribe Section - SEO Optimized */}
-      <div 
-        className="border-t border-slate-100 pt-12 mt-12 animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-backwards"
-        style={{ animationDelay: '200ms' }}
-      >
-        <div className="bg-slate-50 p-8 flex flex-col md:flex-row justify-between items-center gap-6 rounded-sm">
-            <div>
-                <h4 className="font-serif text-lg text-primary mb-2">Stay Updated</h4>
-                <p className="text-slate-500 text-sm">Receive occasional updates on my latest research.</p>
-            </div>
-            <div className="flex flex-col w-full md:w-auto gap-2">
-                {status === 'success' ? (
-                    <div className="flex flex-col items-end">
-                        <div className="flex items-center gap-2 text-primary font-medium px-4 py-2 border border-primary/20 bg-primary/5 rounded">
-                            <Check size={18} /> Subscribed!
-                        </div>
-                        <Link href={`/unsubscribe?email=${encodeURIComponent(email)}`} className="text-xs text-slate-400 mt-2 hover:text-primary underline">
-                            Mistake? Unsubscribe here.
-                        </Link>
-                    </div>
-                ) : status === 'loading' ? (
-                      <div className="flex items-center gap-2 text-slate-500 px-4 py-2">
-                         <Loader2 size={20} className="animate-spin" /> Checking...
-                       </div>
-                ) : status === 'error' ? (
-                    <div className="flex flex-col items-end">
-                        <div className="flex items-center gap-2 text-yellow-600 font-medium px-4 py-2 border border-yellow-200 bg-yellow-50 rounded">
-                            <AlertCircle size={18} /> Already Subscribed
-                        </div>
-                         <div className="flex gap-2 text-xs mt-2">
-                             <button onClick={() => setStatus('idle')} className="text-primary hover:underline">Try again</button>
-                             <Link href={`/unsubscribe?email=${encodeURIComponent(email)}`} className="text-slate-400 hover:text-primary underline">
-                                Unsubscribe
-                             </Link>
-                         </div>
-                    </div>
-                ) : (
-                    <div className="flex w-full md:w-auto gap-2">
-                        <input 
-                            type="email" 
-                            placeholder="Email Address" 
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            className="px-4 py-2 border border-slate-200 focus:outline-none focus:border-primary w-full md:w-64" 
-                        />
-                        <button onClick={handleSubscribe} className="bg-primary text-white px-6 py-2 font-medium hover:bg-slate-800 transition-colors">Subscribe</button>
-                    </div>
-                )}
-            </div>
-        </div>
-      </div>
     </div>
   );
 };
