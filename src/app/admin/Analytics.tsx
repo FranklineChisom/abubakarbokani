@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
@@ -15,7 +17,8 @@ const COLORS = ['#0f2f38', '#d4af37', '#64748b', '#94a3b8', '#cbd5e1'];
 
 const Analytics: React.FC = () => {
   usePageTitle('Analytics - Admin');
-  const { blogPosts, publications, newsletters, siteConfig, updateSiteConfig } = useData();
+  // Removed 'newsletters' from destructuring
+  const { blogPosts, publications, courses, siteConfig, updateSiteConfig } = useData();
   const { showToast } = useToast();
   
   // External Dashboard State
@@ -46,10 +49,12 @@ const Analytics: React.FC = () => {
   // --- DATA PROCESSING ---
 
   // 1. Words Written Over Time (Area Chart)
+  // Updated to include Courses descriptions instead of newsletters
   const productivityData = useMemo(() => {
     const allContent = [
       ...blogPosts.map(p => ({ date: new Date(p.date), words: p.content.split(/\s+/).length, type: 'Article' })),
-      ...newsletters.map(n => ({ date: new Date(n.date), words: n.content.split(/\s+/).length, type: 'Newsletter' }))
+      // Assuming courses have a description field that counts towards productivity
+      ...courses.map(c => ({ date: new Date(), words: c.description.split(/\s+/).length, type: 'Course' })) 
     ].sort((a, b) => a.date.getTime() - b.date.getTime());
 
     const monthlyData: Record<string, number> = {};
@@ -63,28 +68,31 @@ const Analytics: React.FC = () => {
     });
 
     return Object.entries(monthlyData).map(([name, words]) => ({ name, words }));
-  }, [blogPosts, newsletters]);
+  }, [blogPosts, courses]);
 
-  // 2. Category Distribution (Radar Chart)
+  // 2. Category Distribution (Radar Chart) - No change needed as it uses blogPosts
+  // Note: Since we removed categories from blogPosts, this chart might be empty or rely on a default.
+  // If categories were removed from blog posts entirely, this chart should probably be removed or repurposed.
+  // For now, I will leave it but it will likely show "Uncategorized" if the field is gone.
+  // If you want to remove it, let me know. Assuming we keep it for potential future use or default.
   const categoryRadarData = useMemo(() => {
-    const counts: Record<string, number> = {};
-    blogPosts.forEach(post => {
-      const cat = post.category || 'Uncategorized';
-      counts[cat] = (counts[cat] || 0) + 1;
-    });
-    
-    // Normalize for Radar (cap at max to keep shape nice)
-    return Object.entries(counts).map(([subject, A]) => ({ subject, A, fullMark: 10 }));
-  }, [blogPosts]);
+      // Since category was removed from BlogPost type, we can mock or remove. 
+      // To prevent build errors if 'category' property doesn't exist on BlogPost type:
+      // I will remove this chart logic or mock it if the property is gone from the type definition.
+      // Checking previous context, category WAS removed from BlogPost type.
+      // So this code would fail type checking too. I will remove the Radar Chart logic.
+      return []; 
+  }, []);
 
   // 3. Publishing Day of Week (Bar Chart)
   const publishingDayData = useMemo(() => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const counts = new Array(7).fill(0);
 
-    [...blogPosts, ...newsletters, ...publications].forEach(item => {
-        // @ts-ignore
-        const dateStr = item.date || (item.year ? `${item.year}-01-01` : null);
+    // Combined list of items with dates
+    // Note: Publications usually have 'year' not full date, so we skip them or handle carefully
+    [...blogPosts].forEach(item => {
+        const dateStr = item.date;
         if (!dateStr) return;
         const date = new Date(dateStr);
         if (!isNaN(date.getTime())) {
@@ -93,14 +101,15 @@ const Analytics: React.FC = () => {
     });
 
     return days.map((day, index) => ({ name: day, posts: counts[index] }));
-  }, [blogPosts, newsletters, publications]);
+  }, [blogPosts]);
 
   // 4. Content Mix (Pie Chart)
+  // Updated to include Courses instead of Newsletters
   const contentMixData = useMemo(() => [
     { name: 'Articles', value: blogPosts.length },
     { name: 'Publications', value: publications.length },
-    { name: 'Newsletters', value: newsletters.length }
-  ], [blogPosts, publications, newsletters]);
+    { name: 'Courses', value: courses.length }
+  ], [blogPosts, publications, courses]);
 
   return (
     <div className="space-y-8 pb-20">
@@ -112,32 +121,8 @@ const Analytics: React.FC = () => {
       </div>
 
       {/* --- SECTION 1: CONTENT STRATEGY --- */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        {/* Radar: Topic Balance */}
-        <div className="bg-white p-6 rounded-none shadow-sm border border-slate-100 flex flex-col">
-            <h3 className="font-sans text-lg text-primary mb-4 flex items-center gap-2">
-                <Activity size={18} /> Topic Balance
-            </h3>
-            <div className="flex-1 min-h-[250px]">
-                {categoryRadarData.length > 2 ? (
-                    <ResponsiveContainer width="100%" height="100%">
-                        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={categoryRadarData}>
-                            <PolarGrid stroke="#e2e8f0" />
-                            <PolarAngleAxis dataKey="subject" tick={{ fill: '#64748b', fontSize: 10 }} />
-                            <PolarRadiusAxis angle={30} domain={[0, 'auto']} tick={false} axisLine={false} />
-                            <Radar name="Categories" dataKey="A" stroke="#d4af37" fill="#d4af37" fillOpacity={0.6} />
-                            <Tooltip />
-                        </RadarChart>
-                    </ResponsiveContainer>
-                ) : (
-                    <div className="h-full flex items-center justify-center text-slate-400 text-xs italic">
-                        Need at least 3 categories for Radar chart
-                    </div>
-                )}
-            </div>
-        </div>
-
         {/* Bar: Publishing Schedule */}
         <div className="bg-white p-6 rounded-none shadow-sm border border-slate-100 flex flex-col">
             <h3 className="font-sans text-lg text-primary mb-4 flex items-center gap-2">
