@@ -11,21 +11,18 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import { Save, Globe, Activity, FileText, ExternalLink } from 'lucide-react';
 import { useToast } from '../../contexts/ToastContext';
 
-// --- HELPER METRICS ---
-
 const COLORS = ['#0f2f38', '#d4af37', '#64748b', '#94a3b8', '#cbd5e1'];
 
 const Analytics: React.FC = () => {
   usePageTitle('Analytics - Admin');
-  // Removed 'newsletters' from destructuring
+  
+  // FIXED: Removed 'newsletters' from destructuring
   const { blogPosts, publications, courses, siteConfig, updateSiteConfig } = useData();
   const { showToast } = useToast();
   
-  // External Dashboard State
   const [dashboardUrl, setDashboardUrl] = useState('');
   const [isEditingUrl, setIsEditingUrl] = useState(false);
 
-  // Initialize from DB (Supabase)
   useEffect(() => {
     if (siteConfig.analyticsUrl) {
         setDashboardUrl(siteConfig.analyticsUrl);
@@ -46,14 +43,10 @@ const Analytics: React.FC = () => {
     }
   };
 
-  // --- DATA PROCESSING ---
-
   // 1. Words Written Over Time (Area Chart)
-  // Updated to include Courses descriptions instead of newsletters
   const productivityData = useMemo(() => {
     const allContent = [
       ...blogPosts.map(p => ({ date: new Date(p.date), words: p.content.split(/\s+/).length, type: 'Article' })),
-      // Assuming courses have a description field that counts towards productivity
       ...courses.map(c => ({ date: new Date(), words: c.description.split(/\s+/).length, type: 'Course' })) 
     ].sort((a, b) => a.date.getTime() - b.date.getTime());
 
@@ -70,27 +63,14 @@ const Analytics: React.FC = () => {
     return Object.entries(monthlyData).map(([name, words]) => ({ name, words }));
   }, [blogPosts, courses]);
 
-  // 2. Category Distribution (Radar Chart) - No change needed as it uses blogPosts
-  // Note: Since we removed categories from blogPosts, this chart might be empty or rely on a default.
-  // If categories were removed from blog posts entirely, this chart should probably be removed or repurposed.
-  // For now, I will leave it but it will likely show "Uncategorized" if the field is gone.
-  // If you want to remove it, let me know. Assuming we keep it for potential future use or default.
-  const categoryRadarData = useMemo(() => {
-      // Since category was removed from BlogPost type, we can mock or remove. 
-      // To prevent build errors if 'category' property doesn't exist on BlogPost type:
-      // I will remove this chart logic or mock it if the property is gone from the type definition.
-      // Checking previous context, category WAS removed from BlogPost type.
-      // So this code would fail type checking too. I will remove the Radar Chart logic.
-      return []; 
-  }, []);
+  // 2. Category Distribution (Radar Chart) - Removed as category field is gone
+  const categoryRadarData: any[] = []; 
 
   // 3. Publishing Day of Week (Bar Chart)
   const publishingDayData = useMemo(() => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const counts = new Array(7).fill(0);
 
-    // Combined list of items with dates
-    // Note: Publications usually have 'year' not full date, so we skip them or handle carefully
     [...blogPosts].forEach(item => {
         const dateStr = item.date;
         if (!dateStr) return;
@@ -104,7 +84,6 @@ const Analytics: React.FC = () => {
   }, [blogPosts]);
 
   // 4. Content Mix (Pie Chart)
-  // Updated to include Courses instead of Newsletters
   const contentMixData = useMemo(() => [
     { name: 'Articles', value: blogPosts.length },
     { name: 'Publications', value: publications.length },
@@ -120,10 +99,7 @@ const Analytics: React.FC = () => {
         </div>
       </div>
 
-      {/* --- SECTION 1: CONTENT STRATEGY --- */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        {/* Bar: Publishing Schedule */}
         <div className="bg-white p-6 rounded-none shadow-sm border border-slate-100 flex flex-col">
             <h3 className="font-sans text-lg text-primary mb-4 flex items-center gap-2">
                 <FileText size={18} /> Publishing Habits
@@ -143,7 +119,6 @@ const Analytics: React.FC = () => {
             </div>
         </div>
 
-        {/* Pie: Content Mix */}
         <div className="bg-white p-6 rounded-none shadow-sm border border-slate-100 flex flex-col">
             <h3 className="font-sans text-lg text-primary mb-4">Content Mix</h3>
             <div className="flex-1 min-h-[250px]">
@@ -170,7 +145,6 @@ const Analytics: React.FC = () => {
         </div>
       </div>
 
-      {/* --- SECTION 2: PRODUCTIVITY --- */}
       <div className="bg-white p-6 rounded-none shadow-sm border border-slate-100">
         <h3 className="font-sans text-lg text-primary mb-6">Cumulative Writing Volume (Words)</h3>
         <div className="h-72 w-full">
@@ -192,7 +166,6 @@ const Analytics: React.FC = () => {
         </div>
       </div>
 
-      {/* --- SECTION 3: EXTERNAL INTEGRATION --- */}
       <div className="bg-slate-50 p-8 border border-slate-200 rounded-sm">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <div>
