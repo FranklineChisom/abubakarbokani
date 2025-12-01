@@ -2,33 +2,33 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { Search, X } from "lucide-react";
-import { BlogPost, Publication, Newsletter } from "../types";
+import { BlogPost, Publication } from "../types";
 import Link from "next/link";
 
 interface SearchResult {
-  type: "blog" | "publication" | "newsletter";
-  item: BlogPost | Publication | Newsletter;
+  type: "blog" | "publication";
+  item: BlogPost | Publication;
   score: number;
 }
 
 interface SearchBarProps {
   blogPosts?: BlogPost[];
   publications?: Publication[];
-  newsletters?: Newsletter[];
+  // newsletters removed
   placeholder?: string;
-  scope?: "all" | "blog" | "publication" | "newsletter";
+  scope?: "all" | "blog" | "publication";
   onRequestClose?: () => void;
-  autoFocus?: boolean; // Added autoFocus prop
+  autoFocus?: boolean;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
   blogPosts = [],
   publications = [],
-  newsletters = [],
+  // newsletters removed
   placeholder = "Search...",
   scope = "all",
   onRequestClose,
-  autoFocus = false // Default to false so it doesn't jump on page load
+  autoFocus = false
 }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -104,17 +104,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       });
     }
 
-    // Search Newsletters
-    if (scope === "all" || scope === "newsletter") {
-      newsletters.forEach(news => {
-        let score = 0;
-        if (news.title.toLowerCase().includes(lowerQuery)) score += 10;
-        if (news.description.toLowerCase().includes(lowerQuery)) score += 3;
-        if (news.content.toLowerCase().includes(lowerQuery)) score += 1;
-        if (score > 0)
-          searchResults.push({ type: "newsletter", item: news, score });
-      });
-    }
+    // Newsletters search removed
 
     searchResults.sort((a, b) => b.score - a.score);
     setResults(searchResults.slice(0, 10));
@@ -191,29 +181,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-[10px] font-bold uppercase text-accent bg-accent/10 px-1.5 py-0.5">
                             Blog
-                          </span>
-                          <span className="text-xs text-slate-400">
-                            {item.date}
-                          </span>
-                        </div>
-                        <h4 className="font-medium text-slate-800">
-                          {highlightText(item.title, query)}
-                        </h4>
-                      </Link>
-                    </li>
-                  );
-                } else if (result.type === "newsletter") {
-                  const item = result.item as Newsletter;
-                  return (
-                    <li key={`news-${item.id}`}>
-                      <Link
-                        href={`/newsletters/${item.slug}`}
-                        className="block px-6 py-4 hover:bg-slate-50 border-b border-slate-100"
-                        onClick={onRequestClose}
-                      >
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-[10px] font-bold uppercase text-green-600 bg-green-50 px-1.5 py-0.5">
-                            Newsletter
                           </span>
                           <span className="text-xs text-slate-400">
                             {item.date}
