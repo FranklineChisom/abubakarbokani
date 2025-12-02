@@ -87,7 +87,7 @@ export default function AdminDashboard() {
     <div className="space-y-8 pb-20 animate-in fade-in duration-500">
       <div className="flex justify-between items-end border-b border-slate-200 pb-4">
         <div>
-            <h2 className="text-3xl font-sans text-primary">Overview</h2>
+            <h2 className="text-3xl font-serif text-primary">Overview</h2>
             <p className="text-slate-500 text-sm mt-1">Welcome back, Dr. Bokani.</p>
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function AdminDashboard() {
 
       {/* Content Chart */}
       <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-100">
-        <h3 className="font-sans text-lg text-primary mb-6">Content Distribution</h3>
+        <h3 className="font-serif text-lg text-primary mb-6">Content Distribution</h3>
         <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={activityData} layout="vertical" margin={{ left: 20 }}>
