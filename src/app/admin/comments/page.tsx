@@ -119,7 +119,7 @@ export default function CommentsManager() {
 
       <div className="flex justify-between items-center mb-8">
         <div>
-            <h2 className="text-3xl font-sans text-slate-800">Comments</h2>
+            <h2 className="text-3xl font-serif text-slate-800">Comments</h2>
             <p className="text-slate-500 text-sm mt-1">Moderate discussion on your articles</p>
         </div>
         <div className="flex bg-white rounded-md shadow-sm border border-slate-200 overflow-hidden p-1 gap-1">

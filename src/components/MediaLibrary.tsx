@@ -144,7 +144,7 @@ const MediaLibrary: React.FC<MediaLibraryProps> = ({ onSelect, onClose }) => {
         {/* Header */}
         <div className="p-5 border-b border-slate-100 flex justify-between items-center bg-white">
           <div>
-            <h3 className="font-sans text-xl text-slate-800">Media Library</h3>
+            <h3 className="font-serif text-xl text-slate-800">Media Library</h3>
             <p className="text-xs text-slate-400 mt-1">
               Select an image or upload a new one.
             </p>

@@ -54,7 +54,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 bg-slate-50">
       <div className="bg-white p-8 rounded-none shadow-md max-w-sm w-full border border-slate-100">
-        <h1 className="text-2xl font-sans text-primary mb-6 text-center">Admin Console</h1>
+        <h1 className="text-2xl font-serif text-primary mb-6 text-center">Admin Console</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>

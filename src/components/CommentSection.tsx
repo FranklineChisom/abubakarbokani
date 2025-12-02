@@ -288,7 +288,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
 
   return (
     <div className="pt-16 mt-16 border-t border-slate-100">
-      <h3 className="font-sans text-2xl text-primary mb-8 flex items-center gap-2">
+      <h3 className="font-serif text-2xl text-primary mb-8 flex items-center gap-2">
         <MessageSquare size={24} /> Discussion
       </h3>
 

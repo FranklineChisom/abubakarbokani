@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, type = 
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               {getIcon()}
-              <h3 className="text-xl font-sans text-slate-800 font-semibold">{title}</h3>
+              <h3 className="text-xl font-serif text-slate-800 font-semibold">{title}</h3>
             </div>
             <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors">
               <X size={20} />

@@ -81,7 +81,7 @@ export default function ProfileManager() {
         <div className="max-w-4xl pb-20 animate-in fade-in duration-500 mx-auto">
             <div className="flex justify-between items-center mb-8">
                 <div>
-                    <h2 className="text-3xl font-sans text-primary">Settings</h2>
+                    <h2 className="text-3xl font-serif text-primary">Settings</h2>
                     <p className="text-slate-500 text-sm mt-1">Manage your profile and contact details</p>
                 </div>
                 <button 
