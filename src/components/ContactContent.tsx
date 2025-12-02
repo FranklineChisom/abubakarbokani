@@ -64,7 +64,7 @@ const ContactContent: React.FC = () => {
     <div className="max-w-5xl mx-auto px-6">
       <Section className="grid md:grid-cols-2 gap-16">
         <div>
-          <h1 className="font-serif text-4xl md:text-5xl text-primary mb-8">Let&apos;s Connect</h1>
+          <h1 className="font-sans text-4xl md:text-5xl text-primary mb-8">Let&apos;s Connect</h1>
           <p className="text-md text-slate-600 font-light leading-relaxed mb-12">
             I am always open to academic discourse, speaking engagements, or research collaborations on almost anything law and policy.
           </p>
@@ -117,7 +117,7 @@ const ContactContent: React.FC = () => {
                   <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-2">
                       <FontAwesomeIcon icon={faCheck} className="w-8 h-8" />
                   </div>
-                  <h3 className="font-serif text-2xl text-primary">Message Sent</h3>
+                  <h3 className="font-sans text-2xl text-primary">Message Sent</h3>
                   <p className="text-slate-600">Thank you for reaching out. I will get back to you shortly.</p>
                   <button onClick={() => setStatus('idle')} className="text-sm text-primary font-medium hover:underline mt-4">Send another message</button>
               </div>

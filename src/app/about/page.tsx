@@ -50,7 +50,7 @@ export default async function About() {
 
         {/* Text Column */}
         <div className="md:col-span-7 lg:col-span-8">
-            <h1 className="font-serif text-4xl md:text-5xl text-primary mb-8">About Me</h1>
+            <h1 className="font-sans text-4xl md:text-5xl text-primary mb-8">About Me</h1>
             <div className="w-12 h-1 bg-primary mb-10"></div>
             
             <div className="prose prose-lg prose-slate text-slate-600 font-light leading-loose">
@@ -84,7 +84,7 @@ export default async function About() {
         style={{ animationDelay: '200ms' }}
       >
         <div>
-          <h3 className="font-serif text-xl text-primary mb-6">Areas of Interest</h3>
+          <h3 className="font-sans text-xl text-primary mb-6">Areas of Interest</h3>
           <ul className="space-y-3">
             {EXPERTISE.map((item, idx) => (
               <li key={idx} className="flex items-center text-slate-700">
@@ -95,7 +95,7 @@ export default async function About() {
           </ul>
         </div>
         <div>
-          <h3 className="font-serif text-xl text-primary mb-6">Education & Honors</h3>
+          <h3 className="font-sans text-xl text-primary mb-6">Education & Honors</h3>
           <ul className="space-y-4 text-slate-600 text-sm">
             <li>
               <strong className="block text-slate-800">Bachelor of Laws (LL.B.) - In View</strong>

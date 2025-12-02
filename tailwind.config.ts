@@ -16,8 +16,8 @@ const config: Config = {
         muted: '#5b6368',
       },
       fontFamily: {
-        sans: ['"Segoe UI"', 'Roboto', 'system-ui', 'sans-serif'],
-        serif: ['Georgia', 'serif'], // Kept specifically for academic headers if needed
+        sans: ['"Segoe UI"', 'Roboto', 'system-ui', 'sans-sans'],
+        sans: ['Georgia', 'sans'], // Kept specifically for academic headers if needed
       },
     },
   },

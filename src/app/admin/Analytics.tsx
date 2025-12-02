@@ -93,7 +93,7 @@ const Analytics: React.FC = () => {
   return (
     <div className="space-y-8 pb-20">
       <div className="flex justify-between items-end">
-        <h2 className="text-3xl font-serif text-slate-800">Analytics & Insights</h2>
+        <h2 className="text-3xl font-sans text-slate-800">Analytics & Insights</h2>
         <div className="text-sm text-slate-500 font-mono">
             Total Words Written: <span className="text-primary font-bold">{productivityData.length > 0 ? productivityData[productivityData.length - 1].words.toLocaleString() : 0}</span>
         </div>

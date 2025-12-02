@@ -10,7 +10,7 @@ export default function NotFound() {
     <div className="min-h-[70vh] flex flex-col items-center justify-center px-6 text-center">
       <Section>
         <div className="mb-8 relative">
-          <h1 className="font-serif text-9xl font-bold text-primary/5 select-none">404</h1>
+          <h1 className="font-sans text-9xl font-bold text-primary/5 select-none">404</h1>
           <div className="absolute inset-0 flex items-center justify-center">
           </div>
         </div>

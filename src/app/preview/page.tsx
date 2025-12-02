@@ -73,7 +73,7 @@ const PreviewContent: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6">
         <div className="bg-white p-8 max-w-md text-center border-t-2 border-red-500 shadow-xl">
-            <h3 className="text-xl font-serif text-slate-800 mb-2">Preview Failed</h3>
+            <h3 className="text-xl font-sans text-slate-800 mb-2">Preview Failed</h3>
             <p className="text-red-600 mb-6 bg-red-50 p-3 text-sm font-mono">{errorMsg}</p>
             <button onClick={() => window.close()} className="text-slate-500 hover:text-slate-800 underline decoration-dotted">
                 Close Window
@@ -143,7 +143,7 @@ const PreviewContent: React.FC = () => {
               )}
           </div>
 
-          <h1 className="font-serif text-4xl md:text-6xl text-primary leading-tight mb-10">
+          <h1 className="font-sans text-4xl md:text-6xl text-primary leading-tight mb-10">
             {data.title || 'Untitled Draft'}
           </h1>
 
@@ -158,7 +158,7 @@ const PreviewContent: React.FC = () => {
             </div>
           )}
 
-          <div className="prose prose-lg prose-slate max-w-none font-light prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:shadow-lg">
+          <div className="prose prose-lg prose-slate max-w-none font-light prose-headings:font-sans prose-headings:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-img:shadow-lg">
             <ReactMarkdown>{data.content || '*Start writing your content...*'}</ReactMarkdown>
           </div>
         </Section>
@@ -174,7 +174,7 @@ const PreviewPage: React.FC = () => {
       <Suspense fallback={
         <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50">
           <Loader2 size={32} className="animate-spin text-primary mb-4" />
-          <p className="text-slate-500 font-serif">Loading preview...</p>
+          <p className="text-slate-500 font-sans">Loading preview...</p>
         </div>
       }>
         <PreviewContent />

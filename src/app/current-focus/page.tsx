@@ -37,11 +37,11 @@ export default async function CurrentFocus() {
           <span className="text-sm font-bold tracking-widest uppercase">Research Focus</span>
         </div>
 
-        <h1 className="font-serif text-4xl md:text-5xl text-primary leading-tight mb-8">
+        <h1 className="font-sans text-4xl md:text-5xl text-primary leading-tight mb-8">
           Current Research & <br/>Strategic Focus
         </h1>
 
-        <div className="prose prose-lg prose-slate max-w-none font-light prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-li:marker:text-accent">
+        <div className="prose prose-lg prose-slate max-w-none font-light prose-headings:font-sans prose-headings:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-li:marker:text-accent">
           <ReactMarkdown>{focusContent || "Content coming soon..."}</ReactMarkdown>
         </div>
 

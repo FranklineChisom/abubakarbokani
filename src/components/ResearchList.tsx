@@ -44,7 +44,7 @@ const ResearchList: React.FC<ResearchListProps> = ({ initialPublications }) => {
       
       {/* Intro - SEO Optimized */}
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <h1 className="font-serif text-4xl md:text-5xl text-primary mb-8">Research & Publications</h1>
+        <h1 className="font-sans text-4xl md:text-5xl text-primary mb-8">Research & Publications</h1>
         <p className="text-xl text-slate-600 font-light leading-relaxed max-w-3xl mb-8">
           My research philosophy centers on adaptive jurisprudence, examining how legal frameworks must evolve to meet the fluid demands of digital innovation, economic integration, and social justice without compromising the stability of the rule of law.
         </p>
@@ -70,10 +70,10 @@ const ResearchList: React.FC<ResearchListProps> = ({ initialPublications }) => {
             return (
               <div key={pub.id} className="bg-slate-50 p-8 rounded-none border border-slate-100 hover:border-slate-200 transition-colors">
                 <div className="flex justify-between items-start mb-4">
-                  <span className="text-accent font-serif italic">{pub.venue}, {pub.year}</span>
+                  <span className="text-accent font-sans italic">{pub.venue}, {pub.year}</span>
                   <span className="text-xs font-bold text-slate-400 border border-slate-200 px-2 py-1 rounded-none">{pub.type}</span>
                 </div>
-                <h3 className="font-serif text-2xl text-primary mb-4">{pub.title}</h3>
+                <h3 className="font-sans text-2xl text-primary mb-4">{pub.title}</h3>
                 <p className="text-slate-600 mb-6 leading-relaxed text-sm md:text-base">
                   {pub.abstract}
                 </p>
@@ -121,7 +121,7 @@ const ResearchList: React.FC<ResearchListProps> = ({ initialPublications }) => {
               <div className="flex flex-wrap gap-2 text-sm text-slate-500 mt-1">
                 <span>{pub.year}</span>
                 <span>•</span>
-                <span className="italic font-serif">{pub.venue}</span>
+                <span className="italic font-sans">{pub.venue}</span>
               </div>
             </div>
           )) : (
@@ -141,7 +141,7 @@ const ResearchList: React.FC<ResearchListProps> = ({ initialPublications }) => {
         className="bg-primary text-white p-10 rounded-none animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-backwards"
         style={{ animationDelay: '300ms' }}
       >
-        <h3 className="font-serif text-2xl mb-4">Research Interests</h3>
+        <h3 className="font-sans text-2xl mb-4">Research Interests</h3>
         <p className="text-slate-300 font-light leading-relaxed mb-4">
           I am actively exploring research collaborations and academic dialogue in the areas of:
         </p>
