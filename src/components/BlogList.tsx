@@ -34,7 +34,7 @@ const BlogList: React.FC<BlogListProps> = ({ initialPosts }) => {
     <div className="max-w-4xl mx-auto px-6 space-y-16 py-12">
       {/* Intro */}
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <h1 className="font-serif text-4xl md:text-5xl text-gray-900 font-bold mb-6">Blog</h1>
+        <h1 className="font-sans text-4xl md:text-5xl text-gray-900 font-bold mb-6">Blog</h1>
         <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mb-10">
           Thoughts on law, policy, and contemporary legal issues in Nigeria and beyond.
         </p>
@@ -64,7 +64,7 @@ const BlogList: React.FC<BlogListProps> = ({ initialPosts }) => {
                 
                 <div className="md:w-3/4">
                     <Link href={`/blog/${post.slug || post.id}`}>
-                        <h2 className="font-serif text-2xl text-gray-900 font-bold mb-3 group-hover:text-red-700 transition-colors cursor-pointer leading-tight">
+                        <h2 className="font-sans text-2xl text-gray-900 font-bold mb-3 group-hover:text-red-700 transition-colors cursor-pointer leading-tight">
                         {post.title}
                         </h2>
                     </Link>

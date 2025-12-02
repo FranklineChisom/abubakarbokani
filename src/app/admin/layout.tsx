@@ -31,7 +31,7 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen bg-secondary flex items-center justify-center px-4">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full border border-slate-100">
-        <h1 className="text-2xl font-serif text-primary mb-6 text-center">Dr. Bokani Admin</h1>
+        <h1 className="text-2xl font-sans text-primary mb-6 text-center">Dr. Bokani Admin</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-bold text-slate-700 mb-1">Email</label>
@@ -121,10 +121,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         pt-16 md:pt-0
       `}>
         <div className="p-6 hidden md:block border-b border-slate-800">
-          <Link href="/" className="text-white font-serif text-xl font-bold tracking-wide hover:text-accent transition-colors">
+          <Link href="/" className="text-white font-sans text-xl font-bold tracking-wide hover:text-accent transition-colors">
             Dr. Bokani
           </Link>
-          <div className="text-[10px] uppercase tracking-widest mt-1 text-slate-500 font-bold">Administration</div>
         </div>
         
         <nav className="flex-1 py-6 space-y-1">

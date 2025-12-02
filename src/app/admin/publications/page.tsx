@@ -168,7 +168,7 @@ export default function PubManager() {
 
       <div className="flex justify-between items-center mb-8">
         <div>
-            <h2 className="text-3xl font-serif text-slate-800">Publications</h2>
+            <h2 className="text-3xl font-sans text-slate-800">Publications</h2>
             <p className="text-slate-500 text-sm mt-1">Manage your academic and policy papers</p>
         </div>
         {!isEditing && (
@@ -181,7 +181,7 @@ export default function PubManager() {
       {isEditing ? (
         <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl md:text-2xl font-serif text-slate-800">{currentPub.title ? 'Edit Publication' : 'New Publication'}</h2>
+            <h2 className="text-xl md:text-2xl font-sans text-slate-800">{currentPub.title ? 'Edit Publication' : 'New Publication'}</h2>
             <button onClick={() => setIsEditing(false)} className="text-slate-400 hover:text-slate-800 p-2 hover:bg-slate-100 rounded-full transition-colors"><X size={20} /></button>
           </div>
           <form onSubmit={(e) => e.preventDefault()} className="space-y-6 bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200/60">

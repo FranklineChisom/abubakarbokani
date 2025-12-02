@@ -64,7 +64,7 @@ export default function CourseManager() {
         {/* Header Section - Only show Add button if NOT editing */}
         <div className="flex justify-between items-center mb-8">
             <div>
-                <h2 className="text-3xl font-serif text-primary">Courses</h2>
+                <h2 className="text-3xl font-sans text-primary">Courses</h2>
                 <p className="text-slate-500 text-sm mt-1">Manage academic courses and materials</p>
             </div>
             {!isEditing && (

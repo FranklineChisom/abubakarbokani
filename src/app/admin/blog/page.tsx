@@ -203,7 +203,7 @@ export default function BlogManager() {
       {isEditing ? (
       <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl md:text-2xl font-serif text-slate-800">{currentPost.title ? 'Edit Post' : 'New Post'}</h2>
+          <h2 className="text-xl md:text-2xl font-sans text-slate-800">{currentPost.title ? 'Edit Post' : 'New Post'}</h2>
           <div className="flex gap-2">
              <button 
                 onClick={handlePreview} 
@@ -312,7 +312,7 @@ export default function BlogManager() {
       <div className="animate-in fade-in duration-500">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
-                <h2 className="text-3xl font-serif text-slate-800">Articles</h2>
+                <h2 className="text-3xl font-sans text-slate-800">Articles</h2>
                 <p className="text-slate-500 text-sm mt-1">Manage your blog posts and drafts</p>
             </div>
             <button onClick={handleCreate} className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-md hover:bg-slate-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium w-full md:w-auto justify-center">
