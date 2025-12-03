@@ -205,11 +205,11 @@ export default function CourseManager() {
                                         </span>
                                     </td>
                                     <td className="p-4 text-right pr-6">
-                                        <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div className="flex justify-end gap-2 opacity-100 transition-opacity">
                                             <button onClick={() => handleEdit(c)} className="p-2 text-slate-400 hover:text-accent hover:bg-blue-50 rounded transition-colors" title="Edit">
                                                 <Edit2 size={16} />
                                             </button>
-                                            <button onClick={() => handleDelete(c.id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors" title="Delete">
+                                            <button onClick={() => handleDelete(c.id)} className="p-2 text-red-600 hover:bg-red-50 rounded transition-colors" title="Delete">
                                                 <Trash2 size={16} />
                                             </button>
                                         </div>
